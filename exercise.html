@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/all.css">
+<!--    <link rel="stylesheet" href="css/exercise.css">-->
+    <style>
+        .bg_slider{
+            width: 100%;
+            position: relative;
+        }
+        .bg_slider ul li{
+            font-size: 0;
+            display: none;
+        }
+        .bg_slider ul li:nth-child(1){
+            display: block;
+        }
+        .bg_slider > ul li img{
+            width: 1920px;
+        }
+        .bg_slider:after{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: #ccc;
+            bottom: -54px;
+        }
+        .bg_nav{
+            display: inline-block;
+/*            overflow: hidden;*/
+            position: relative;
+            left: 225px;
+            bottom: 113px;
+            width: 555px;
+            height: 166px;
+            padding: 0 75px 0 54px;
+            margin-left: -75px;
+            vertical-align: top;
+            font-size: 0;
+        }
+        .bg_nav ul{
+            overflow: hidden;
+        }
+        .bg_nav ul li{
+            float: left;
+            width: 228px;
+            position: absolute;
+        }
+        .bg_nav ul li:nth-child(6){
+            left: -228px;
+        }
+        .bg_nav ul li:nth-child(1){
+            left: 0;
+        }
+        .bg_nav ul li:nth-child(2){
+            left: 228px;
+        }
+        .bg_nav ul li:nth-child(3){
+            left: 456px;
+        }
+        .bg_nav ul li:nth-child(4){
+            left: 684px;
+        }
+        .bg_nav ul li:nth-child(5){
+            left: 912px;
+        }
+        .bg_nav ul li .bottom_line{
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 3px;
+            background-color: #e0ac47;
+            left: 0;
+        }
+        .bg_nav ul li .bottom_text{
+            display: block;
+            height: 53px;
+            font-weight: normal;
+            font-size: 15px;
+            text-align: center;
+            line-height: 55px;
+            cursor: pointer;
+        }
+        .bg_nav ul li .bottom_text.hover{
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+        .bg_nav ul li .top_img{
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            width: 228px;
+            height: 113px;
+        }
+        .bg_nav ul li .top_img:after{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: #rgba(0,0,0,0.4);
+/*            background-color: #fff;*/
+            z-index: 5;
+        }
+        .bg_nav ul li .top_img.active:after{
+            background-color: transparent;
+        }
+        .length_txt{
+            position: absolute;
+            left: 55%;
+            transform: translateX(-50%);
+            width: 10%;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            bottom: -55px;
+        }
+        .arrow{
+            position: absolute;
+            overflow: hidden;
+            display: inline-block;
+            left: 175px;
+            bottom: -50px;
+            width: 684px;
+            height: 166px;
+            margin-left: -75px;
+            padding: 0 75px 0 54px;
+        }
+        .arrow a:first-child{
+            bottom: -10px;
+            left: 0;
+            width: 54px;
+            height: 53px;
+            display: inline-block;
+            font-size: 30px;
+            position: absolute;
+        }
+        .arrow a:last-child{
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            width: 54px;
+            bottom: -10px;
+            height: 53px;
+            font-size: 30px;
+        }
+    </style>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/exercise.js"></script>
+    <script src="js/jquery.transform2d.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.easing.compatibility.js"></script>
+</head>
+<body>
+    <div class="bg_slider">
+        <ul>
+            <li><a href="#"><img src="images/bg-_bg-1.jpg" alt="배경"></a></li>
+            <li><a href="#"><img src="images/bg-_bg-2.jpg" alt="배경"></a></li>
+            <li><a href="#"><img src="images/bg-_bg-3.jpg" alt="배경"></a></li>
+            <li><a href="#"><img src="images/bg-_bg-4.jpg" alt="배경"></a></li>
+            <li><a href="#"><img src="images/bg-_bg-1.jpg" alt="배경"></a></li>
+            <li><a href="#"><img src="images/bg-_bg-2.jpg" alt="배경"></a></li>
+
+        </ul>
+        <div class="arrow">
+            <a href="#">&lt;</a>
+            <a href="#">&gt;</a>
+        </div>
+        <div class="length_txt">
+            <span>0</span>
+            <span>/</span>
+            <span>0</span>
+        </div>
+    </div>
+    <div class="bg_nav">
+        <ul>
+            <li>
+                <div class="top_img">
+                    <img src="images/bg-nav-01.jpg" alt="네비">
+                </div>
+                <div class="bottom_text">pc방 포인트샵 시즌1</div>
+                <div class="bottom_line"></div>
+            </li>
+            <li>
+                <div class="top_img">
+                    <img src="images/bg-nav-02.jpg" alt="네비">
+                </div>
+                <div class="bottom_text">ffp 스쿼드 모드 시범 서비스</div>
+                <div class="bottom_line"></div>
+            </li>
+            <li>
+                <div class="top_img">
+                    <img src="images/bg-nav-03.jpg" alt="네비">
+                </div>
+                <div class="bottom_text">우리동네 pc방 이벤트 진행안내</div>
+                <div class="bottom_line"></div>
+            </li>
+            <li>
+                <div class="top_img">
+                    <img src="images/bg-nav-04.jpg" alt="네비">
+                </div>
+                <div class="bottom_text">온라인 배틀 랭킹 START!</div>
+                <div class="bottom_line"></div>
+            </li>
+            <li>
+                <div class="top_img">
+                    <img src="images/bg-nav-01.jpg" alt="네비">
+                </div>
+                <div class="bottom_text">pc방 포인트샵 시즌1</div>
+                <div class="bottom_line"></div>
+            </li>
+            <li>
+                <div class="top_img">
+                    <img src="images/bg-nav-02.jpg" alt="네비">
+                </div>
+                <div class="bottom_text">ffp 스쿼드 모드 시범 서비스</div>
+                <div class="bottom_line"></div>
+
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
